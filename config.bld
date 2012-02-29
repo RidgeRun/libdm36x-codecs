@@ -1,0 +1,7 @@
+/* location of the GCC Arm9 tools */
+var GCArmv5T = xdc.useModule('gnu.targets.arm.GCArmv5T');
+GCArmv5T.LONGNAME = "bin/" + java.lang.System.getenv("TOOLCHAIN_PREFIX") +"-gcc";
+GCArmv5T.rootDir = java.lang.System.getenv("CSTOOL_DIR");
+
+Build.targets = [
+];

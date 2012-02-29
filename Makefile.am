@@ -7,7 +7,7 @@ libdm36x_codecs_la_LDFLAGS = -version-info 1:0:0 -Wl,dm36x/linker.cmd
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libdm36x-codecs.pc
 
-EXTRA_DIST = libdm36x-codecs.pc.in dm36x.cfg
+EXTRA_DIST = libdm36x-codecs.pc.in dm36x.cfg config.bld
 
 BUILT_SOURCES = dm36x/linker.cmd
 
