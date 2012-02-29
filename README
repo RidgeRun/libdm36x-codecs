@@ -1,0 +1,14 @@
+Library for TI's DM365 SoC Codecs by RidgeRun
+
+This library builds a autotools (and Linux in general) friendly version of the
+codecs for the dm36x SoC family. This greatly simplifies the process of building
+apps that require from APIs related to CodecEngine.
+
+This library is used by RidgeRun's gst-ti-plugins to allow the plugins to be
+independent of the version of DVSDK being used.
+
+To build all you need to do is to pass the following arguments:
+  --with-dvsdkdir to configure the location of the dvsdk directory
+
+This library always target the latest DVSDK, for older DVSDK releases see the
+corresponding branch.
