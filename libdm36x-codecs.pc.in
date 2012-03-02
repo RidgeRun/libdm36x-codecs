@@ -6,4 +6,4 @@ Name: DM36x Codecs
 Description: Codecs package for DM356x
 Version: @&VERSION@
 Libs: -L${libdir} -ldm36x-codecs
-Cflags: @CONFIGURO_CFLAGS@
+Cflags: -Dxdc__RESTRICT__ @CONFIGURO_CFLAGS@
