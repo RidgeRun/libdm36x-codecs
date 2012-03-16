@@ -1,13 +1,12 @@
 include @DVSDKDIR@/Rules.make
 
-lib_LTLIBRARIES = libdm36x-codecs.la
-libdm36x_codecs_la_SOURCES= dummy.c
-libdm36x_codecs_la_LDFLAGS = -version-info 1:0:0 -Wl,dm36x/linker.cmd
-
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = libdm36x-codecs.pc
+pkgconfig_DATA = libdm36x-codecs.pc libdm36x-codecs.cmd
 
 EXTRA_DIST = libdm36x-codecs.pc.in dm36x.cfg config.bld
+
+libdm36x-codecs.cmd: dm36x/linker.cmd
+	cp $< $@
 
 BUILT_SOURCES = dm36x/linker.cmd
 
