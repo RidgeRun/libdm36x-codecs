@@ -13,7 +13,11 @@ BUILT_SOURCES = dm36x/linker.cmd
 # We need to export this variables to allow the config.bld to work
 export CSTOOL_DIR
 export TOOLCHAIN_PREFIX=@TOOLCHAIN_PREFIX@
-export XDCPATH=$(XDC_INSTALL_DIR)/packages;$(CE_INSTALL_DIR)/packages;$(FC_INSTALL_DIR)/packages;$(XDAIS_INSTALL_DIR)/packages;$(CODEC_INSTALL_DIR)/packages;$(CMEM_INSTALL_DIR)/packages;$(XDC_USER_PATH)
+export MP3_ENCODER_ENABLED=@MP3_ENCODER_ENABLED@
+export MP3_ENCODER_PACKAGE=@MP3_ENCODER_PACKAGE@
+export MP3_DECODER_ENABLED=@MP3_DECODER_ENABLED@
+export MP3_DECODER_PACKAGE=@MP3_DECODER_PACKAGE@
+export XDCPATH=$(XDC_INSTALL_DIR)/packages;$(CE_INSTALL_DIR)/packages;$(FC_INSTALL_DIR)/packages;$(XDAIS_INSTALL_DIR)/packages;$(CODEC_INSTALL_DIR)/packages;$(CMEM_INSTALL_DIR)/packages;$(MP3_ENCODER_PACKAGE);$(MP3_DECODER_PACKAGE)
 
 dm36x/linker.cmd : $(srcdir)/dm36x.cfg
 	$(XDC_INSTALL_DIR)/xs xdc.tools.configuro -o dm36x \

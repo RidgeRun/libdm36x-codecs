@@ -616,6 +616,12 @@ am__EXEEXT_TRUE
 LTLIBOBJS
 LIBOBJS
 TOOLCHAIN_PREFIX
+MP3_DECODER_PACKAGE
+MP3_DECODER_ENABLED
+MP3DECODER
+MP3_ENCODER_PACKAGE
+MP3_ENCODER_ENABLED
+MP3ENCODER
 DVSDKDIR
 CPP
 OTOOL64
@@ -735,6 +741,8 @@ enable_fast_install
 with_gnu_ld
 enable_libtool_lock
 with_dvsdkdir
+with_mp3encoder
+with_mp3decoder
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1383,6 +1391,10 @@ Optional Packages:
                           both]
   --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
   --with-dvsdkdir=<path>  Set the path for the dvsdk
+  --with-mp3encoder=<path>
+                          Set the path for the mp3 encoder codec directory
+  --with-mp3decoder=<path>
+                          Set the path for the mp3 decoder codec directory
 
 Some influential environment variables:
   CC          C compiler command
@@ -10492,6 +10504,52 @@ fi
 if ! test -f $DVSDKDIR/Rules.make ; then
   as_fn_error $? "Can not find Rules.make in the DVSDK installation directory provided ($DVSDKDIR/Rules.make)" "$LINENO" 5
 fi
+
+
+# Check whether --with-mp3encoder was given.
+if test "${with_mp3encoder+set}" = set; then :
+  withval=$with_mp3encoder; { $as_echo "$as_me:${as_lineno-$LINENO}: Setting the mp3encoderdir \"$withval\"" >&5
+$as_echo "$as_me: Setting the mp3encoderdir \"$withval\"" >&6;}
+     MP3ENCODER=$withval
+
+
+
+fi
+
+
+if ! test -z $MP3ENCODER ; then
+  if ! test -f $MP3ENCODER/packages-production/ittiam/codecs/mp3_enc/MP3_ENC.xdc ; then
+    as_fn_error $? "Can not find MP3_ENC.xdc in the MP3 encoder codec directory provided ($MP3ENCODER/packages-production/ittiam/codecs/mp3_enc/MP3_ENC.xdc)" "$LINENO" 5
+  fi
+  MP3_ENCODER_ENABLED="yes"
+
+  MP3_ENCODER_PACKAGE="$MP3ENCODER/packages-production/"
+
+fi
+
+
+# Check whether --with-mp3decoder was given.
+if test "${with_mp3decoder+set}" = set; then :
+  withval=$with_mp3decoder; { $as_echo "$as_me:${as_lineno-$LINENO}: Setting the mp3decoderdir \"$withval\"" >&5
+$as_echo "$as_me: Setting the mp3decoderdir \"$withval\"" >&6;}
+     MP3DECODER=$withval
+
+
+
+fi
+
+
+if ! test -z $MP3DECODER ; then
+  if ! test -f $MP3DECODER/packages-production/ittiam/codecs/mp3_dec/MP3_DEC.xdc ; then
+    as_fn_error $? "Can not find MP3_DEC.xdc in the MP3 decoder codec directory provided ($MP3DECODER/packages-production/ittiam/codecs/mp3_dec/MP3_DEC.xdc)" "$LINENO" 5
+  fi
+  MP3_DECODER_ENABLED="yes"
+
+  MP3_DECODER_PACKAGE="$MP3DECODER/packages-production/"
+
+fi
+
+
 
 # Inform the automake files about the host prefix
 TOOLCHAIN_PREFIX=$ac_cv_host

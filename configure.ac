@@ -28,6 +28,40 @@ if ! test -f $DVSDKDIR/Rules.make ; then
   AC_MSG_ERROR([Can not find Rules.make in the DVSDK installation directory provided ($DVSDKDIR/Rules.make)])
 fi
 
+AC_ARG_WITH(mp3encoder,
+    [AS_HELP_STRING([--with-mp3encoder=<path>],
+        [Set the path for the mp3 encoder codec directory])],
+    [AC_MSG_NOTICE([Setting the mp3encoderdir "$withval"])
+     AC_SUBST([MP3ENCODER],[$withval])
+    ]
+)
+
+if ! test -z $MP3ENCODER ; then
+  if ! test -f $MP3ENCODER/packages-production/ittiam/codecs/mp3_enc/MP3_ENC.xdc ; then
+    AC_MSG_ERROR([Can not find MP3_ENC.xdc in the MP3 encoder codec directory provided ($MP3ENCODER/packages-production/ittiam/codecs/mp3_enc/MP3_ENC.xdc)])
+  fi
+  AC_SUBST([MP3_ENCODER_ENABLED],"yes")
+  AC_SUBST([MP3_ENCODER_PACKAGE],"$MP3ENCODER/packages-production/")
+fi
+
+AC_ARG_WITH(mp3decoder,
+    [AS_HELP_STRING([--with-mp3decoder=<path>],
+        [Set the path for the mp3 decoder codec directory])],
+    [AC_MSG_NOTICE([Setting the mp3decoderdir "$withval"])
+     AC_SUBST([MP3DECODER],[$withval])
+    ]
+)
+
+if ! test -z $MP3DECODER ; then
+  if ! test -f $MP3DECODER/packages-production/ittiam/codecs/mp3_dec/MP3_DEC.xdc ; then
+    AC_MSG_ERROR([Can not find MP3_DEC.xdc in the MP3 decoder codec directory provided ($MP3DECODER/packages-production/ittiam/codecs/mp3_dec/MP3_DEC.xdc)])
+  fi
+  AC_SUBST([MP3_DECODER_ENABLED],"yes")
+  AC_SUBST([MP3_DECODER_PACKAGE],"$MP3DECODER/packages-production/")
+fi
+
+
+
 # Inform the automake files about the host prefix
 AC_SUBST([TOOLCHAIN_PREFIX],[$ac_cv_host])
 
