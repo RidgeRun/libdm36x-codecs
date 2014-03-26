@@ -42,6 +42,7 @@ if ! test -z $MP3ENCODER ; then
   fi
   AC_SUBST([MP3_ENCODER_ENABLED],"yes")
   AC_SUBST([MP3_ENCODER_PACKAGE],"$MP3ENCODER/packages-production/")
+  AC_SUBST([MP3_ENCODER_CFLAGS],"-DMP3_ENCODER")
 fi
 
 AC_ARG_WITH(mp3decoder,
@@ -58,6 +59,7 @@ if ! test -z $MP3DECODER ; then
   fi
   AC_SUBST([MP3_DECODER_ENABLED],"yes")
   AC_SUBST([MP3_DECODER_PACKAGE],"$MP3DECODER/packages-production/")
+  AC_SUBST([MP3_DECODER_CFLAGS],"-DMP3_DECODER")
 fi
 
 

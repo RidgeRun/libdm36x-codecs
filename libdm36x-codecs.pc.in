@@ -6,4 +6,4 @@ Name: DM36x Codecs
 Description: Codecs package for DM36x
 Version: @&VERSION@
 Libs: -Wl,${libdir}/pkgconfig/libdm36x-codecs.cmd
-Cflags: -Dxdc__RESTRICT__ @CONFIGURO_CFLAGS@
+Cflags: -Dxdc__RESTRICT__ @CONFIGURO_CFLAGS@ @&MP3_ENCODER_CFLAGS@ @&MP3_DECODER_CFLAGS@

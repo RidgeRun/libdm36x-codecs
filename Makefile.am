@@ -15,8 +15,10 @@ export CSTOOL_DIR
 export TOOLCHAIN_PREFIX=@TOOLCHAIN_PREFIX@
 export MP3_ENCODER_ENABLED=@MP3_ENCODER_ENABLED@
 export MP3_ENCODER_PACKAGE=@MP3_ENCODER_PACKAGE@
+export MP3_ENCODER_CFLAGS=@MP3_ENCODER_CFLAGS@
 export MP3_DECODER_ENABLED=@MP3_DECODER_ENABLED@
 export MP3_DECODER_PACKAGE=@MP3_DECODER_PACKAGE@
+export MP3_DECODER_CFLAGS=@MP3_DECODER_CFLAGS@
 export XDCPATH=$(XDC_INSTALL_DIR)/packages;$(CE_INSTALL_DIR)/packages;$(FC_INSTALL_DIR)/packages;$(XDAIS_INSTALL_DIR)/packages;$(CODEC_INSTALL_DIR)/packages;$(CMEM_INSTALL_DIR)/packages;$(MP3_ENCODER_PACKAGE);$(MP3_DECODER_PACKAGE)
 
 dm36x/linker.cmd : $(srcdir)/dm36x.cfg
@@ -30,6 +32,8 @@ libdm36x-codecs.pc: $(srcdir)/libdm36x-codecs.pc.in dm36x
 	    -e "s?@&exec_prefix@?@exec_prefix@?" \
 	    -e "s?@&libdir@?@libdir@?" \
 	    -e "s?@&VERSION@?@VERSION@?" \
+	    -e "s?@&MP3_ENCODER_CFLAGS@?@MP3_ENCODER_CFLAGS@?" \
+	    -e "s?@&MP3_DECODER_CFLAGS@?@MP3_DECODER_CFLAGS@?" \
 	    -e "s?@CONFIGURO_CFLAGS@?$(shell cat dm36x/compiler.opt)?" \
 	    $< > $@
 
